@@ -4,8 +4,8 @@
 import pandas as pd
 
 url="https://data.seattle.gov/api/views/tw7j-dfaw/rows.csv?accessType=DOWNLOAD"
-url1="https://data.seattle.gov/api/views/65db-xm6k/rows.csv?accessType=DOWNLOAD"
-df = pd.read_csv(url1)
+#url1="https://data.seattle.gov/api/views/65db-xm6k/rows.csv?accessType=DOWNLOAD"
+df = pd.read_csv(url)
 
 def test_create_dataframe(df, colNames):
     col = df.columns
@@ -25,13 +25,12 @@ def test_create_dataframe(df, colNames):
     #check that all the columns have the same data types
     col_list = col.to_list()
     for i in col_list:
-        print("----------\n",i)
+        #print("----------\n",i)
         column_values = df[i].to_list()
         column_types = [type(item) for item in column_values]
         numTypes = len(set(column_types))
-        print(numTypes)
+        #print(numTypes)
         if numTypes > 1:
-            print()
             return False
     return True
 
@@ -39,6 +38,5 @@ def test_create_dataframe(df, colNames):
 col_list= ['trip_id', 'starttime', 'stoptime', 'bikeid', 'tripduration','to_station_name','from_station_name','from_station_id','to_station_id','usertype','gender','birthyear' ]
 col_list1=['Date', 'Fremont Bridge East Sidewalk', 'Fremont Bridge West Sidewalk']
 
-print("\n result of function \n")
-print(test_create_dataframe(df,col_list1))
+#print(test_create_dataframe(df,col_list1))
 
